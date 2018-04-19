@@ -6,13 +6,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ESPN Scoreboard';
 
   form;
   ngOnInit() {
     this.form = new FormGroup({
-      league: new FormControl("",Validators.required)
+      league: new FormControl(null,Validators.required)
     })
+
+    /* onSubmit(formValues) {
+      console.log("hi.");
+    } */
   }
 }

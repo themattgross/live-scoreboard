@@ -16,14 +16,14 @@
                 <select class="form-control form-control-lg" name="league" formControlName="league">
                   <option disabled>Select a League</option>
                   <option [value]="mlb">MLB</option>
-                  <option [value]="mlb">NHL</option>
+                  <option [value]="nhl">NHL</option>
                   <option [value]="nba">NBA</option>
                 </select>
               </form>
             </div>
           </div>
           <br>
-          <button class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid">Submit</button>
+          <button class="btn btn-lg btn-primary" role="button" name="submit" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid">Submit</button>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <span *ngIf="form.get('league').value == 'mlb'"><app-mlb></app-mlb></span>
+        <router-outlet></router-outlet>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
