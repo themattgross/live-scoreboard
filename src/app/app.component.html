@@ -3,25 +3,32 @@
 </nav>
 
 <main role="main" class="container">
-  <div class="card">
-    <div class="card-content">
-      <h1>What's the Score? When's the Game?</h1>
-      <p class="lead">Select a league below and click "Submit."</p>
-      <br>
-      <div class="row">
-        <div class="col col-md-4">
-          <select class="form-control form-control-lg">
-            <option disabled>Select a League</option>
-            <option value="mlb">MLB</option>
-            <option value="mlb">NHL</option>
-            <option value="nba">NBA</option>
-          </select>
+  <div class="row justify-content-around">
+    <div class="col col-md-6">
+      <div class="card">
+        <div class="card-content">
+          <h1>What's the Score? When's the Game?</h1>
+          <p class="lead">Select a league below and click "Submit."</p>
+          <br>
+          <div class="row">
+            <div class="col col-md-8">
+              <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+                <select class="form-control form-control-lg" name="league" formControlName="league">
+                  <option disabled>Select a League</option>
+                  <option [value]="mlb">MLB</option>
+                  <option [value]="mlb">NHL</option>
+                  <option [value]="nba">NBA</option>
+                </select>
+              </form>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid">Submit</button>
         </div>
       </div>
-      <br>
-      <button class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">Submit</button>
     </div>
   </div>
+  
 </main>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -34,10 +41,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <span *ngIf="form.get('league').value == 'mlb'"><app-mlb></app-mlb></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

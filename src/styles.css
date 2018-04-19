@@ -41,6 +41,15 @@ body {
     border: 0;
 }
 
+.btn-primary:disabled {
+    background-color: #BDBDBD;
+}
+
+.btn-primary:disabled:hover {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+}
+
 .form-control {
     border-radius: 0px;
 }
