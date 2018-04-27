@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       newGame.home_team_score = game.home_team_score;
       newGame.period = game.period;
       newGame.period_label = game.period_label;
-      newGame.started_at = game.started_at;
+      newGame.started_at = new Date(game.started_at).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       // Get team names
       for (let away_team of data.away_teams){
         if (away_team.id == game.away_team_id) {

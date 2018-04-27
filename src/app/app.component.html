@@ -40,12 +40,27 @@
         </button>
       </div>
       <div class="modal-body" *ngIf="isPopulated">
-        <div class="game" *ngFor="let game of todayGameList">
-          <div class="row">
-            <div class="col-md-2">
-              <h5>{{game.away_team}}</h5>
+        <div>
+        <div class="game">
+          <div class="row" style="border-bottom: 2px solid #EFEFEF;">
+            <div class="col-md-6" *ngFor="let game of todayGameList">
+              <div class="row">
+                <div class="col-7">
+                  <h5>{{game.away_team}}</h5>
+                  <h5>{{game.home_team}}</h5>
+                </div>
+                <div class="col-1">
+                  <h5>{{game.away_team_score}}</h5>
+                  <h5>{{game.home_team_score}}</h5>
+                </div>
+                <div class="col-3">
+                  <h6>{{game.started_at}}</h6>
+                  <h6>{{game.period_label}} {{game.period}}</h6>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
         </div>
         
       </div>
