@@ -12,18 +12,17 @@
           <br>
           <div class="row">
             <div class="col col-md-8">
-              <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+              <form [formGroup]="form">
                 <select class="form-control form-control-lg" name="league" formControlName="league">
                   <option disabled>Select a League</option>
-                  <option [value]="mlb">MLB</option>
-                  <option [value]="nhl">NHL</option>
-                  <option [value]="nba">NBA</option>
+                  <option *ngFor="let league of leagues" value="{{league}}">{{league}}</option>
                 </select>
               </form>
             </div>
           </div>
           <br>
-          <button class="btn btn-lg btn-primary" role="button" name="submit" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid">Submit</button>
+          <button class="btn btn-lg btn-primary" role="button" name="submit" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid" (click)="onSubmit(form.value)">Submit</button>
+          <span *ngIf="form.get('form.league') == 'MLB'"><app-mlb></app-mlb></span>
         </div>
       </div>
     </div>
@@ -41,7 +40,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <router-outlet></router-outlet>
+        <p>{{gameData}}</p>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

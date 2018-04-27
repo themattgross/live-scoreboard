@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-
+import { EspnService } from './espn.service';
 
 import { AppComponent } from './app.component';
 import { MlbComponent } from './mlb/mlb.component';
@@ -37,7 +37,7 @@ export const ROUTES: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [EspnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
