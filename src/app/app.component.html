@@ -39,8 +39,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>{{gameData}}</p>
+      <div class="modal-body" *ngIf="isPopulated">
+        <div class="game" *ngFor="let game of todayGameList">
+          <div class="row">
+            <div class="col-md-2">
+              <h5>{{game.away_team}}</h5>
+            </div>
+          </div>
+        </div>
         
       </div>
       <div class="modal-footer">
