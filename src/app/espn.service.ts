@@ -21,4 +21,28 @@ export class EspnService {
 
     return this.http.get(this.endpoint + '/baseball/mlb/games?on=today', opts).map(data => data.json());
   }
+
+  getNhl() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    headers.append('Accept', 'application/vnd.stattleship.com; version=1');
+
+    let opts = new RequestOptions();
+    opts.headers = headers;
+
+    return this.http.get(this.endpoint + '/hockey/nhl/games?on=today', opts).map(data => data.json());
+  }
+
+  getNba() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    headers.append('Accept', 'application/vnd.stattleship.com; version=1');
+
+    let opts = new RequestOptions();
+    opts.headers = headers;
+
+    return this.http.get(this.endpoint + '/basketball/nba/games?on=today', opts).map(data => data.json());
+  }
 }

@@ -3,7 +3,7 @@ export class TodayGameList{
     home_team: string;
     away_team_score: string;
     home_team_score: string;
-    period: string;
+    period: number;
     period_label: string;
     started_at: string;
 }

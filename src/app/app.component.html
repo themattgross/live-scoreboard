@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark justify-content-around">
-  <a class="navbar-brand" href="#">ESPN Scoreboard</a>
+  <a class="navbar-brand" href="#">Scoreboard</a>
 </nav>
 
 <main role="main" class="container">
@@ -42,8 +42,8 @@
       <div class="modal-body" *ngIf="isPopulated">
         <div>
         <div class="game">
-          <div class="row" style="border-bottom: 2px solid #EFEFEF;">
-            <div class="col-md-6" *ngFor="let game of todayGameList">
+          <div class="row">
+            <div class="col-md-6" style="border-bottom: 2px solid #EFEFEF;" *ngFor="let game of todayGameList">
               <div class="row">
                 <div class="col-7">
                   <h5>{{game.away_team}}</h5>
@@ -54,8 +54,8 @@
                   <h5>{{game.home_team_score}}</h5>
                 </div>
                 <div class="col-3">
-                  <h6>{{game.started_at}}</h6>
-                  <h6>{{game.period_label}} {{game.period}}</h6>
+                  <h6 *ngIf="game.period == 0">{{game.started_at}}</h6>
+                  <h6 *ngIf="game.period > 0">{{game.period_label}} {{game.period}}</h6>
                 </div>
               </div>
             </div>

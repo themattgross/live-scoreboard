@@ -11,7 +11,7 @@ import { forEach } from '@angular/router/src/utils/collection';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'ESPN Scoreboard';
+  title = 'Scoreboard';
   leagues: String[];
   form;
   gameData;
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   
 
   constructor(private espnService: EspnService){
-    this.todayGameList = new Array<TodayGameList>();
+    //this.todayGameList = new Array<TodayGameList>();
   }
 
   ngOnInit() {
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   populateTodayGameList(data) {
+    this.todayGameList = new Array<TodayGameList>();
     // First loop through each game for game data
     for(let game of data.games) {
       let newGame = new TodayGameList;
@@ -58,11 +59,21 @@ export class AppComponent implements OnInit {
   }
 
   getMlb(): void{this.espnService.getMlb().subscribe(data => this.populateTodayGameList(data))};
+  getNhl(): void{this.espnService.getNhl().subscribe(data => this.populateTodayGameList(data))};
+  getNba(): void{this.espnService.getNba().subscribe(data => this.populateTodayGameList(data))};
 
   onSubmit(formValues) {
-    console.log(formValues);
-    if (formValues = 'MLB'){
-      this.getMlb();
+    switch(formValues.league) {
+      case "MLB":
+        this.getMlb();
+        break;
+      case "NHL":
+        this.getNhl();
+        break;
+      case "NBA":
+        this.getNba();
+        break;
     }
+
   }
 }
