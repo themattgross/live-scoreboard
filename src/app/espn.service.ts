@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class EspnService {
 
   endpoint = 'https://api.stattleship.com';
-  token = 'Token token=cd0a18334b1f8fc5f0dfc36017dd1455';
+  token = 'Token token=95e0de03eaa9719e71c4c372b0cff1dc';
 
   constructor(public http:Http) { }
 

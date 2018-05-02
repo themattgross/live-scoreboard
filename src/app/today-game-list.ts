@@ -6,4 +6,5 @@ export class TodayGameList{
     period: number;
     period_label: string;
     started_at: string;
+    status: string;
 }

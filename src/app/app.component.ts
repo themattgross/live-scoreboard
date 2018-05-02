@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
       newGame.period = game.period;
       newGame.period_label = game.period_label;
       newGame.started_at = new Date(game.started_at).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      newGame.status = game.status;
       // Get team names
       for (let away_team of data.away_teams){
         if (away_team.id == game.away_team_id) {
@@ -74,6 +75,5 @@ export class AppComponent implements OnInit {
         this.getNba();
         break;
     }
-
   }
 }

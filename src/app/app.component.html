@@ -22,7 +22,6 @@
           </div>
           <br>
           <button class="btn btn-lg btn-primary" role="button" name="submit" data-toggle="modal" data-target=".bd-example-modal-lg" [disabled]="!form.valid" (click)="onSubmit(form.value)">Submit</button>
-          <span *ngIf="form.get('form.league') == 'MLB'"><app-mlb></app-mlb></span>
         </div>
       </div>
     </div>
@@ -34,7 +33,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Scoreboard</h5>
+        <h5 class="modal-title">{{form.value.league}} Scoreboard</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -50,12 +49,13 @@
                   <h5>{{game.home_team}}</h5>
                 </div>
                 <div class="col-1">
-                  <h5>{{game.away_team_score}}</h5>
-                  <h5>{{game.home_team_score}}</h5>
+                  <h5 *ngIf="game.status == 'in_progress' || game.status == 'closed'">{{game.away_team_score}}</h5>
+                  <h5 *ngIf="game.status == 'in_progress' || game.status == 'closed'">{{game.home_team_score}}</h5>
                 </div>
                 <div class="col-3">
-                  <h6 *ngIf="game.period == 0">{{game.started_at}}</h6>
-                  <h6 *ngIf="game.period > 0">{{game.period_label}} {{game.period}}</h6>
+                  <h6 *ngIf="game.status == 'upcoming'">{{game.started_at}}</h6>
+                  <h6 *ngIf="game.status == 'in_progress'">{{game.period_label}} {{game.period}}</h6>
+                  <h6 *ngIf="game.status == 'closed'">Final</h6>
                 </div>
               </div>
             </div>
